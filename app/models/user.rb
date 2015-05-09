@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true }
   before_validation :ensure_session_token
 
+  has_many :orders, class_name: 'Library', foreign_key: 'user_id'
+  has_many :movies, through: :orders, source: :movie
+
   attr_reader :password
 
   def password=(password)

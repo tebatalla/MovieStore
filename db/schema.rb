@@ -11,7 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150509214046) do
+ActiveRecord::Schema.define(version: 20150509223240) do
+
+  create_table "libraries", force: :cascade do |t|
+    t.integer  "user_id",            null: false
+    t.integer  "purchase_option_id", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "libraries", ["purchase_option_id"], name: "index_libraries_on_purchase_option_id"
+  add_index "libraries", ["user_id"], name: "index_libraries_on_user_id"
+
+  create_table "movies", force: :cascade do |t|
+    t.string   "title",      null: false
+    t.text     "plot"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "movies", ["title"], name: "index_movies_on_title"
+
+  create_table "purchase_options", force: :cascade do |t|
+    t.decimal  "price",      null: false
+    t.string   "quality"
+    t.integer  "movie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "purchase_options", ["movie_id"], name: "index_purchase_options_on_movie_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "nickname",        null: false
