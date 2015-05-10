@@ -20,10 +20,14 @@ class ApplicationController < ActionController::Base
   end
 
   def user_params
-    params.require(:user).permit(:nickname, :email, :password)
+    params.require(:user).permit(:nickname, :email, :password, :password_confirmation)
   end
 
   def ensure_logged_in
     redirect_to new_session_url unless current_user
+  end
+
+  def ensure_current_user
+    redirect_to user_url(current_user.id) if current_user != User.find(params[:id])
   end
 end

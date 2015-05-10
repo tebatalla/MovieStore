@@ -13,5 +13,5 @@ class Library < ActiveRecord::Base
   validates :user_id, :purchase_option_id, presence: true
   belongs_to :purchase_option
   belongs_to :user
-  has_one_through :movie, through: :purchase_option, source: :movie
+  has_one :movie, through: :purchase_option, source: :movie
 end

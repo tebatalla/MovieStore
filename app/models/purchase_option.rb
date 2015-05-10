@@ -12,5 +12,5 @@
 
 class PurchaseOption < ActiveRecord::Base
   validates :price, :movie_id, presence: true
-  belongs_to :movie
+  belongs_to :movie, dependent: :destroy
 end

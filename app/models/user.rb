@@ -14,7 +14,8 @@
 class User < ActiveRecord::Base
   validates :nickname, :email, :password_digest, :session_token, presence: true
   validates :nickname, :email, uniqueness: true
-  validates :password, length: { minimum: 6, allow_nil: true }
+  validates :password, length: { minimum: 6, allow_nil: true }, confirmation: true
+  validates_presence_of :password_confirmation, on: :create
   before_validation :ensure_session_token
 
   has_many :orders, class_name: 'Library', foreign_key: 'user_id'

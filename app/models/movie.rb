@@ -12,4 +12,6 @@
 class Movie < ActiveRecord::Base
   validates :title, presence: true
   has_many :purchase_options
+
+  default_scope { order('created_at') }
 end

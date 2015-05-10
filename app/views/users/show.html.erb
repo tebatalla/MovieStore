@@ -1,1 +1,17 @@
-<%= button_to "Logout", session_url(current_user), method: :delete  %>
+<div class="row">
+  <div class="col-sm-12">
+    <h2><%= @user.nickname %></h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <h3>Your movies</h3>
+  </div>
+  <div class="col-sm-4">
+    <ul class="list-group">
+      <% @user.movies.each do |movie| %>
+      <li class="list-group-item"><%= link_to movie.title, movie_url(movie) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

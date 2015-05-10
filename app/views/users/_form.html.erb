@@ -17,6 +17,12 @@
     <label for="user-password">Password</label>
       <input type="password" id="user-password" name="user[password]" class="form-control password">
   </div>
+  <% if new_user %>
+    <div class="form-group">
+      <label for="user-password-confirmation">Password Confirmation</label>
+        <input type="password" id="user-password" name="user[password_confirmation]" class="form-control password">
+    </div>
+  <% end %>
   <div class="form-group">
     <%= button_to text, users_url, class: "btn btn-success" %>
   </div>
