@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+movies = Movie.create([{ title: 'The Godfather', plot: 'Good movie' },
+                       { title: 'Taxi Driver', plot: 'Vietnam vet goes a little crazy' },
+                       { title: 'Interstellar', plot: 'Cool space movie' }])
+
+User.create(nickname: 'Al', email: 'al@godfather.com', password: 'password')
+
+movies.each do |movie|
+  PurchaseOption.create(price: '2.99', quality: 'HD', movie: movie)
+end
