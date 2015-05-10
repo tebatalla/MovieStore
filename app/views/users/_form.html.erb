@@ -1,7 +1,7 @@
 <% text = new_user ? 'Sign up' : 'Sign in' %>
 <% url = new_user ? users_url : session_url %>
 
-<form class="new-session" action="<%= url %>" method="POST">
+<form class="new-session" action="<%= url %>" method="POST" data-remote="true">
   <%= auth_input  %>
   <% if new_user %>
   <div class="form-group">

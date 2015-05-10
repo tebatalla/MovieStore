@@ -9,11 +9,9 @@ class SessionsController < ApplicationController
     @user = User.find_by_credentials(user_params[:email], user_params[:password])
     if @user
       login!(@user)
-      redirect_to :root
+      render js: "window.location = '/'"
     else
-      @user = User.new(email: user_params[:email])
-      flash.now[:errors] = ["Invalid email and/or password"]
-      render :new
+      render json: { error: ["Invalid email and/or password"] }, status: 422
     end
   end
 

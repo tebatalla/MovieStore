@@ -1,15 +1,8 @@
 <div class="row">
   <div class="col-sm-offset-4 col-sm-4">
     <h1>New User</h1>
-    <% if flash[:errors] %>
-      <div class="alert alert-danger">
-      <ul class="list-group">
-        <% flash[:errors].each do |error| %>
-        <li class="list-group-item"><%= error %></li>
-        <% end %>
-      </ul>
-      </div>
-    <% end %>
+    <div class="notice">
+    </div>
     <%= render 'form', user: @user, new_user: true %>
 
     <%= link_to 'Already a user? Sign In!', new_session_url  %>
