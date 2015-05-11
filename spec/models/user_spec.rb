@@ -14,5 +14,16 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "password encryption" do
+    it "does not save passwords to the database" do
+      User.create!(nickname: "jack", email:'jack@jack.com', password: "abcdef", password_confirmation: 'abcdef')
+      user = User.find_by_nickname("jack")
+      expect(user.password).not_to be("abcdef")
+    end
+
+    it "encrypts the password using BCrypt" do
+      expect(BCrypt::Password).to receive(:create)
+      User.new(nickname: "jack", email:'jack@jack.com', password: "abcdef", password_confirmation: 'abcdef')
+    end
+  end
 end
