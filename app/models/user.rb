@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   before_validation :ensure_session_token
 
   has_many :orders, class_name: 'Library', foreign_key: 'user_id'
+  has_many :purchase_options, through: :orders, source: :purchase_option
   has_many :movies, through: :orders, source: :movie
 
   attr_reader :password

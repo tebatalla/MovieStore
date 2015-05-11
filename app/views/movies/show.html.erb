@@ -1,12 +1,26 @@
 <div class="row">
+  <div class="notice col-sm-4">
+  </div>
+</div>
+<div class="row">
   <div class="col-sm-12">
     <h2><%= @movie.title %></h2>
     <% @movie.purchase_options.each do |opt| %>
+      <% if @options.include? opt %>
       <%= button_to "#{opt.price} #{opt.quality}",
-          buy_url,
+          buy_url(purchase_option_id: opt.id),
           remote: true,
-          class: 'btn btn-default',
-          purchase_option_id: opt.id %>
+          class: 'btn btn-success disabled',
+          form_class: "option-#{opt.id} purchase-form"
+           %>
+      <% else %>
+      <%= button_to "#{opt.price} #{opt.quality}",
+          buy_url(purchase_option_id: opt.id),
+          remote: true,
+          class: 'btn btn-success',
+          form_class: "option-#{opt.id} purchase-form"
+           %>
+      <% end %>
     <% end %>
     <p><%= @movie.plot %></p>
   </div>

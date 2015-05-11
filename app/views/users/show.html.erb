@@ -9,8 +9,8 @@
   </div>
   <div class="col-sm-4">
     <ul class="list-group">
-      <% @user.movies.each do |movie| %>
-      <li class="list-group-item"><%= link_to movie.title, movie_url(movie) %></li>
+      <% @user.orders.each do |order| %>
+      <li class="list-group-item"><%= link_to order.movie.title, movie_url(order.movie) %> <%= order.purchase_option.quality %></li>
       <% end %>
     </ul>
   </div>

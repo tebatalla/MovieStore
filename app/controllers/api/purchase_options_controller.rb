@@ -1,13 +1,17 @@
 class Api::PurchaseOptionsController < ApplicationController
   def buy
-    @order = PurchaseOption.find(purchase_params[:purchase_option_id])
-    current_user.orders.create(purchase_option_id: @order.id)
-    render json: @order.movie, status: 200
+    @option = PurchaseOption.find(purchase_param)
+    @order = current_user.orders.new(purchase_option_id: @option.id)
+    if @order.save
+      render json: @order, status: 200
+    else
+      render json: { error: ["Movie already purchased"] }, status: 422
+    end
   end
 
   private
 
-  def purchase_params
+  def purchase_param
     params.require(:purchase_option_id)
   end
 end

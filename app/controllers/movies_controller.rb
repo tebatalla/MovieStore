@@ -5,6 +5,7 @@ class MoviesController < ApplicationController
   end
 
   def show
+    @options = current_user.purchase_options
     @movie = Movie.includes(:purchase_options).find(params[:id])
   end
 end

@@ -12,15 +12,18 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
 
 $($(document).ajaxError( function (event, res) {
-  $('.notice').html('<ul class="list-group">');
-  var $listGroup = $('.notice').find('.list-group');
-  res.responseJSON.error.forEach(function (err) {
-    $listGroup.append('<li class="list-group-item">' + err + '</li>');
-  });
-  $('.notice').addClass('alert alert-danger');
+    $('.notice').html('<ul class="list-group">');
+    var $listGroup = $('.notice').find('.list-group');
+    res.responseJSON.error.forEach(function (err) {
+      $listGroup.append('<li class="list-group-item">' + err + '</li>');
+    });
+    $('.notice').addClass('alert alert-danger');
+  }));
+$($(document).on('ajax:success', '.purchase-form', function (event, res) {
+  var response = res.responseJSON;
+  $('.option-' + response.purchase_option_id).find('button').addClass('disabled');
 }));

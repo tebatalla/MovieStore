@@ -15,6 +15,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(:movies).find(params[:id])
+    @user = User.includes(:movies, :orders).find(params[:id])
   end
 end
