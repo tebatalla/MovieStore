@@ -23,5 +23,7 @@
       <% end %>
     <% end %>
     <p><%= @movie.plot %></p>
+    <%= link_to 'Back to all movies', movies_url %>
+    <%= link_to 'Back to your movies', user_url(current_user) %>
   </div>
 </div>
