@@ -1,6 +1,13 @@
 <div class="row">
   <div class="col-sm-12">
     <h2><%= @movie.title %></h2>
+    <% @movie.purchase_options.each do |opt| %>
+      <%= button_to "#{opt.price} #{opt.quality}",
+          buy_url,
+          remote: true,
+          class: 'btn btn-default',
+          purchase_option_id: opt.id %>
+    <% end %>
     <p><%= @movie.plot %></p>
   </div>
 </div>

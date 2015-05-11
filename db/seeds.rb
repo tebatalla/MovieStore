@@ -13,5 +13,5 @@ movies = Movie.create([{ title: 'The Godfather', plot: 'Good movie' },
 User.create(nickname: 'Al', email: 'al@godfather.com', password: 'password')
 
 movies.each do |movie|
-  PurchaseOption.create(price: '2.99', quality: 'HD', movie: movie)
+  PurchaseOption.create(price: 2.99, quality: 'HD', movie: movie)
 end

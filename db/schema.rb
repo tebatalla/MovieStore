@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150509223240) do
+ActiveRecord::Schema.define(version: 20150510234807) do
 
   create_table "libraries", force: :cascade do |t|
     t.integer  "user_id",            null: false
@@ -33,11 +33,11 @@ ActiveRecord::Schema.define(version: 20150509223240) do
   add_index "movies", ["title"], name: "index_movies_on_title"
 
   create_table "purchase_options", force: :cascade do |t|
-    t.decimal  "price",      null: false
+    t.decimal  "price",      precision: 8, scale: 2, null: false
     t.string   "quality"
     t.integer  "movie_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   add_index "purchase_options", ["movie_id"], name: "index_purchase_options_on_movie_id"

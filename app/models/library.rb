@@ -14,4 +14,7 @@ class Library < ActiveRecord::Base
   belongs_to :purchase_option
   belongs_to :user
   has_one :movie, through: :purchase_option, source: :movie
+
+  validates :purchase_option_id, uniqueness: { scope: :user_id,
+    message: "You may only purchase a movie option once" }
 end
