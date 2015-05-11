@@ -24,6 +24,5 @@ $($(document).ajaxError( function (event, res) {
     $('.notice').addClass('alert alert-danger');
   }));
 $($(document).on('ajax:success', '.purchase-form', function (event, res) {
-  var response = res.responseJSON;
-  $('.option-' + response.purchase_option_id).find('button').addClass('disabled');
+  $(event.currentTarget).find('.btn').addClass('disabled');
 }));
